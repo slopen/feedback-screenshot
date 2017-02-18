@@ -251,6 +251,7 @@ export default class Screenshot {
         }
 
         e.preventDefault ();
+        e.stopPropagation ();
     }
 
     data = () => {
