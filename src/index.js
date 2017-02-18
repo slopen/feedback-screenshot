@@ -75,6 +75,7 @@ export default class Screenshot {
 
     constructor (options = {}) {
         this.options = options;
+        this.root = options.root || document.body;
 
         this.glass = createGlass ();
         this.highlightClose = createHighlightClose ();
@@ -118,8 +119,8 @@ export default class Screenshot {
             document.getElementsByClassName (HIGHLIGHT_CLASS)
         );
 
-        document.body.removeEventListener ('mousemove', this.mouseMoveEvent, false);
-        document.body.removeEventListener ('click', this.mouseClickEvent, false);
+        this.root.removeEventListener ('mousemove', this.mouseMoveEvent, false);
+        this.root.removeEventListener ('click', this.mouseClickEvent, false);
     }
 
     open = () => {
@@ -136,8 +137,8 @@ export default class Screenshot {
         document.body.appendChild (this.highlightContainer);
 
         // bind mouse delegate events
-        document.body.addEventListener('mousemove', this.mouseMoveEvent, false);
-        document.body.addEventListener('click', this.mouseClickEvent, false);
+        this.root.addEventListener('mousemove', this.mouseMoveEvent, false);
+        this.root.addEventListener('click', this.mouseClickEvent, false);
 
         this.highlightClose.addEventListener ('click', () => {
             removeElements ([this.removeElement]);
