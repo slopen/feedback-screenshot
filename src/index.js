@@ -119,7 +119,7 @@ export default class Screenshot {
             document.getElementsByClassName (HIGHLIGHT_CLASS)
         );
 
-        this.root.removeEventListener ('mousemove', this.mouseMoveEvent, false);
+        document.body.removeEventListener ('mousemove', this.mouseMoveEvent, false);
         this.root.removeEventListener ('click', this.mouseClickEvent, false);
     }
 
@@ -137,7 +137,7 @@ export default class Screenshot {
         document.body.appendChild (this.highlightContainer);
 
         // bind mouse delegate events
-        this.root.addEventListener('mousemove', this.mouseMoveEvent, false);
+        document.body.addEventListener('mousemove', this.mouseMoveEvent, false);
         this.root.addEventListener('click', this.mouseClickEvent, false);
 
         this.highlightClose.addEventListener ('click', () => {
